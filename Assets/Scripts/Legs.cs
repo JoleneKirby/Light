@@ -40,5 +40,14 @@ public class Legs : MonoBehaviour
             Speed = 5f;
             transform.localScale = new Vector3(1f, 1f, 1f);
         }
+
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            Speed = 10f;
+        }
+        else
+        {
+            Speed = 5f;
+        }
     }
 }
