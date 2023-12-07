@@ -30,11 +30,13 @@ public class Eyes : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(RotationX, 0, 0);
         Target.Rotate(Vector3.up * mouseX);
+
     }
 
     void LateUpdate()
     {
         Vector3 targetPosition = Target.position - transform.forward * Distance;
         transform.position = targetPosition;
+
     }
 }
