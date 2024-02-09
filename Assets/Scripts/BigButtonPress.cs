@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonPress2 : MonoBehaviour
+public class BigButtonPress : MonoBehaviour
 {
     // Start is called before the first frame update
     public float MinDistane = 10f;
@@ -13,11 +13,17 @@ public class ButtonPress2 : MonoBehaviour
 
     public Camera Camera;
 
-    public LayerMask Button2;
+    public LayerMask BigButton;
 
     public Material ButtonMat;
 
-    public bool Button2On = false;
+    public Transform Stutter;
+
+    public ButtonPress1 Button1;
+
+    public ButtonPress2 Button2;
+
+    private bool BigButtonOn = false;
 
     private float Distance => Vector3.Distance(Player.position, Button.position);
 
@@ -32,11 +38,12 @@ public class ButtonPress2 : MonoBehaviour
         Ray ray = Camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit Hit;
 
-        if (Input.GetMouseButtonDown(0) && Distance <= MinDistane && Physics.Raycast(ray, out Hit, float.MaxValue, Button2.value) && Button2On == false)
+        if (Input.GetMouseButtonDown(0) && Distance <= MinDistane && Physics.Raycast(ray, out Hit, float.MaxValue, BigButton.value) && BigButtonOn == false && Button1.Button1On && Button2.Button2On)
         {
-            Button2On = true;
+            BigButtonOn = true;
             Button.GetComponent<MeshRenderer>().material = ButtonMat;
-            Debug.Log(":3");
-        }
+            Stutter.transform.position += new Vector3(0, 3, 0);
+            Debug.Log(":D");
+        }   
     }
 }
