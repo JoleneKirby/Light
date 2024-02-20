@@ -9,8 +9,6 @@ public class ButtonPress2 : MonoBehaviour
 
     public Transform Player;
 
-    public Transform Button;
-
     public Camera Camera;
 
     public LayerMask Button2;
@@ -21,7 +19,7 @@ public class ButtonPress2 : MonoBehaviour
 
     public Pausing Paused;
 
-    private float Distance => Vector3.Distance(Player.position, Button.position);
+    private float Distance => Vector3.Distance(Player.position, transform.position);
 
     void Update()
     {
@@ -33,7 +31,7 @@ public class ButtonPress2 : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && Distance <= MinDistance && Physics.Raycast(ray, out Hit, float.MaxValue, Button2.value) && Button2On == false)
             {
                 Button2On = true;
-                Button.GetComponent<MeshRenderer>().material = ButtonMat;
+                GetComponent<MeshRenderer>().material = ButtonMat;
             }
         }
     }

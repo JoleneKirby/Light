@@ -8,8 +8,6 @@ public class BigButtonPress : MonoBehaviour
 
     public Transform Player;
 
-    public Transform Button;
-
     public Camera Camera;
 
     public LayerMask BigButton;
@@ -32,7 +30,7 @@ public class BigButtonPress : MonoBehaviour
     
     [HideInInspector] public bool PowerOff;
 
-    public float Distance => Vector3.Distance(Player.position, Button.position);
+    public float Distance => Vector3.Distance(Player.position, transform.position);
 
     void Update()
     {
@@ -45,7 +43,7 @@ public class BigButtonPress : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && Distance <= MinDistance && Physics.Raycast(ray, out Hit, float.MaxValue, BigButton.value) && BigButtonOn == false && Button1.Button1On == true && Button2.Button2On == true)
             {
                 BigButtonOn = true;
-                Button.GetComponent<MeshRenderer>().material = ButtonMat;
+                GetComponent<MeshRenderer>().material = ButtonMat;
             }
             else if (Input.GetMouseButtonDown(0) && Distance <= MinDistance && Physics.Raycast(ray, out Hit, float.MaxValue, BigButton.value) && BigButtonOn == false)
             {
