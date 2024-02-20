@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DoorOpen : MonoBehaviour
 {
-    private float MinDistane = 3;
+    private float MinDistance = 3;
 
     private bool DoorIsOpen;
 
@@ -33,7 +33,7 @@ public class DoorOpen : MonoBehaviour
             Ray ray = Camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit Hit;
 
-            if (Input.GetMouseButtonDown(0) && Distance <= MinDistane && Physics.Raycast(ray, out Hit, float.MaxValue, Door.value) && DoorIsOpen == false)
+            if (Input.GetMouseButtonDown(0) && Distance <= MinDistance && Physics.Raycast(ray, out Hit, float.MaxValue, Door.value) && DoorIsOpen == false)
             {
                 DoorIsOpen = true;
             }

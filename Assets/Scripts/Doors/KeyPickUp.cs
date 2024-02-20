@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KeyPickUp : MonoBehaviour
 {
-    private float MinDistane = 3;
+    private float MinDistance = 3;
 
     public Transform Player;
 
@@ -26,7 +26,7 @@ public class KeyPickUp : MonoBehaviour
             Ray ray = Camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit Hit;
 
-            if (Input.GetMouseButtonDown(0) && Distance <= MinDistane && Physics.Raycast(ray, out Hit, float.MaxValue, Key.value) && KeyGone == false)
+            if (Input.GetMouseButtonDown(0) && Distance <= MinDistance && Physics.Raycast(ray, out Hit, float.MaxValue, Key.value) && KeyGone == false)
             {
                 KeyGone = true;
                 GetComponent<MeshRenderer>().enabled = false;

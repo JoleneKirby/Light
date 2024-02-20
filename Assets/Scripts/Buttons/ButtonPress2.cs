@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ButtonPress2 : MonoBehaviour
 {
-    private float MinDistane = 3;
+    private float MinDistance = 3;
 
     public Transform Player;
 
@@ -30,7 +30,7 @@ public class ButtonPress2 : MonoBehaviour
             Ray ray = Camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit Hit;
 
-            if (Input.GetMouseButtonDown(0) && Distance <= MinDistane && Physics.Raycast(ray, out Hit, float.MaxValue, Button2.value) && Button2On == false)
+            if (Input.GetMouseButtonDown(0) && Distance <= MinDistance && Physics.Raycast(ray, out Hit, float.MaxValue, Button2.value) && Button2On == false)
             {
                 Button2On = true;
                 Button.GetComponent<MeshRenderer>().material = ButtonMat;

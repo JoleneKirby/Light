@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LockedDoorOpen : MonoBehaviour
 {
-    private float MinDistane = 3;
+    private float MinDistance = 3;
 
     [HideInInspector] public bool DoorIsOpen;
 
@@ -39,11 +39,11 @@ public class LockedDoorOpen : MonoBehaviour
 
             IsLocked = false;
 
-            if (Input.GetMouseButtonDown(0) && Distance <= MinDistane && Physics.Raycast(ray, out Hit, float.MaxValue, LockedDoor.value) && DoorIsOpen == false && Key.KeyGone)
+            if (Input.GetMouseButtonDown(0) && Distance <= MinDistance && Physics.Raycast(ray, out Hit, float.MaxValue, LockedDoor.value) && DoorIsOpen == false && Key.KeyGone)
             {
                 DoorIsOpen = true;
             }
-            else if (Input.GetMouseButtonDown(0) && Distance <= MinDistane && Physics.Raycast(ray, out Hit, float.MaxValue, LockedDoor.value) && DoorIsOpen == false)
+            else if (Input.GetMouseButtonDown(0) && Distance <= MinDistance && Physics.Raycast(ray, out Hit, float.MaxValue, LockedDoor.value) && DoorIsOpen == false)
             {
                 IsLocked = true;
             }
