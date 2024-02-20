@@ -8,13 +8,13 @@ using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 using Color = UnityEngine.Color;
 
-public class Leaving : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class Quitting : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public TextMeshProUGUI ExitText;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        ExitText.color = new Color(255, 255, 255, 255);
+        ExitText.color = new Color(1, 1, 1, 1);
     }
 
     public void OnPointerExit(PointerEventData eventData)

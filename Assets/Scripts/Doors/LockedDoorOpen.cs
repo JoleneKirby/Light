@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class LockedDoorOpen : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public float MinDistane = 10f;
+    private float MinDistane = 3;
 
-    private bool DoorIsOpen = false;
+    [HideInInspector] public bool DoorIsOpen;
 
     public Transform Player;
 
@@ -21,28 +20,44 @@ public class LockedDoorOpen : MonoBehaviour
 
     public KeyPickUp Key;
 
-    private float Distance => Vector3.Distance(Player.position, TheDoor.position);
+    [HideInInspector] public bool IsLocked;
 
-    void Start()
-    {
+    private bool RightAngle;
 
-    }
+    private float Counter = 180;
 
-    // Update is called once per frame
+    public Pausing Paused;
+
+    public float Distance => Vector3.Distance(Player.position, TheDoor.position);
+
     void Update()
     {
-        Ray ray = Camera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit Hit;
+        if (Paused.GamePaused == false)
+        {
+            Ray ray = Camera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit Hit;
 
-        if (Input.GetMouseButtonDown(0) && Distance <= MinDistane && Physics.Raycast(ray, out Hit, float.MaxValue, LockedDoor.value) && DoorIsOpen == false && Key.KeyGone)
-        {
-            DoorIsOpen = true;
-            Hinge.transform.Rotate(0, 90, 0);
-            Debug.Log("Door Unlocked :)");
-        }
-        else if (Input.GetMouseButtonDown(0) && Distance <= MinDistane && Physics.Raycast(ray, out Hit, float.MaxValue, LockedDoor.value) && DoorIsOpen == false)
-        {
-            Debug.Log("Door Locked :(");
+            IsLocked = false;
+
+            if (Input.GetMouseButtonDown(0) && Distance <= MinDistane && Physics.Raycast(ray, out Hit, float.MaxValue, LockedDoor.value) && DoorIsOpen == false && Key.KeyGone)
+            {
+                DoorIsOpen = true;
+            }
+            else if (Input.GetMouseButtonDown(0) && Distance <= MinDistane && Physics.Raycast(ray, out Hit, float.MaxValue, LockedDoor.value) && DoorIsOpen == false)
+            {
+                IsLocked = true;
+            }
+
+            if (DoorIsOpen == true && RightAngle == false)
+            {
+                Hinge.transform.Rotate(0, 0.5f, 0);
+                Counter -= 1;
+
+                if (Counter <= 0)
+                {
+                    RightAngle = true;
+                }
+            }
         }
     }
 }

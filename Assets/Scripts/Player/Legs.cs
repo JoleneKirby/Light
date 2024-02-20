@@ -6,46 +6,56 @@ public class Legs : MonoBehaviour
 {
     public CharacterController Controller;
 
-    public float Speed = 5f;
-
-    public float Gravity = 10f;
+    private float Speed = 5;
 
     Vector3 Velocity;
 
-    void Start()
-    {
+    public Pausing Paused;
 
-    }
+    private bool UnderCelling;
 
     void Update()
     {
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
-
+        RaycastHit Hit; 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        if (Input.GetKey("left shift"))
+        if (Paused.GamePaused == false)
         {
-            Speed = 2f;
-            transform.localScale = new Vector3(1f, 0.5f, 1f);
-        } else 
-        {
-            transform.localScale = new Vector3(1f, 1f, 1f);
-
-            Speed = 5f;
-
-            if (Input.GetKey(KeyCode.LeftControl))
+            if (Input.GetKey("left shift"))
             {
-                Speed = 10f;
+                Speed = 2;
+                transform.localScale = new Vector3(1, 0.5f, 1);
+            }
+            else
+            {
+                if (Input.GetKeyUp("left shift") && Physics.Raycast(transform.position, Vector3.up, out Hit, 2))
+                {
+                    UnderCelling = true;
+                }
+
+                if (UnderCelling == true && Physics.Raycast(transform.position, Vector3.up, out Hit, 2))
+                {
+                    Speed = 2;
+                    transform.localScale = new Vector3(1, 0.5f, 1);
+                }
+                else
+                {
+                    UnderCelling = false;
+                    Speed = 5;
+                    transform.localScale = new Vector3(1, 1, 1);
+
+                    if (Input.GetKey(KeyCode.LeftControl))
+                    {
+                        Speed = 10;
+                    }
+                }
             }
         }
 
         Controller.Move(move * Speed * Time.deltaTime);
-
-        Velocity.y -= Gravity * Time.deltaTime;
-
+        Velocity.y -= 0.003f * Time.deltaTime;
         Controller.Move(Velocity);
-
-
     }
 }

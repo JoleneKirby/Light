@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class BigButtonPress : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public float MinDistane = 10f;
+    private float MinDistance = 3;
 
     public Transform Player;
 
@@ -23,31 +22,46 @@ public class BigButtonPress : MonoBehaviour
 
     public ButtonPress2 Button2;
 
-    private bool BigButtonOn = false;
+    public Pausing Paused;
 
-    private float Distance => Vector3.Distance(Player.position, Button.position);
+    private bool RightHeight = false;
 
-    void Start()
-    {
+    private float Counter = 350;
 
-    }
+    [HideInInspector] public bool BigButtonOn;
+    
+    [HideInInspector] public bool PowerOff;
 
-    // Update is called once per frame
+    public float Distance => Vector3.Distance(Player.position, Button.position);
+
     void Update()
     {
-        Ray ray = Camera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit Hit;
+        if (Paused.GamePaused == false)
+        {
+            Ray ray = Camera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit Hit;
+            PowerOff = false;
 
-        if (Input.GetMouseButtonDown(0) && Distance <= MinDistane && Physics.Raycast(ray, out Hit, float.MaxValue, BigButton.value) && BigButtonOn == false && Button1.Button1On && Button2.Button2On)
-        {
-            BigButtonOn = true;
-            Button.GetComponent<MeshRenderer>().material = ButtonMat;
-            Stutter.transform.position += new Vector3(0, 3, 0);
-            Debug.Log("Shutter Door Open :D");
-        }   
-        else if (Input.GetMouseButtonDown(0) && Distance <= MinDistane && Physics.Raycast(ray, out Hit, float.MaxValue, BigButton.value) && BigButtonOn == false)
-        {
-            Debug.Log("No Power D:");
+            if (Input.GetMouseButtonDown(0) && Distance <= MinDistance && Physics.Raycast(ray, out Hit, float.MaxValue, BigButton.value) && BigButtonOn == false && Button1.Button1On == true && Button2.Button2On == true)
+            {
+                BigButtonOn = true;
+                Button.GetComponent<MeshRenderer>().material = ButtonMat;
+            }
+            else if (Input.GetMouseButtonDown(0) && Distance <= MinDistance && Physics.Raycast(ray, out Hit, float.MaxValue, BigButton.value) && BigButtonOn == false)
+            {
+                PowerOff = true;
+            }
+
+            if (BigButtonOn == true && RightHeight == false)
+            {
+                Stutter.transform.Translate(0, 0.01f, 0);
+                Counter -= 1;
+
+                if (Counter <= 0)
+                {
+                    RightHeight = true;
+                }
+            }
         }
     }
 }

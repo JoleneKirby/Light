@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class KeyPickUp : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public float MinDistane = 10f;
+    private float MinDistane = 3;
 
     public Transform Player;
 
@@ -15,26 +14,23 @@ public class KeyPickUp : MonoBehaviour
 
     public LayerMask Key;
 
-    public bool KeyGone = false;
+    [HideInInspector] public bool KeyGone;
 
+    public Pausing Paused;
     private float Distance => Vector3.Distance(Player.position, KeyItem.position);
 
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        Ray ray = Camera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit Hit;
-
-        if (Input.GetMouseButtonDown(0) && Distance <= MinDistane && Physics.Raycast(ray, out Hit, float.MaxValue, Key.value) && KeyGone == false)
+        if (Paused.GamePaused == false)
         {
-            KeyGone = true;
-            Debug.Log("You Got a Key :D");
-            GetComponent<MeshRenderer>().enabled = false;
+            Ray ray = Camera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit Hit;
+
+            if (Input.GetMouseButtonDown(0) && Distance <= MinDistane && Physics.Raycast(ray, out Hit, float.MaxValue, Key.value) && KeyGone == false)
+            {
+                KeyGone = true;
+                GetComponent<MeshRenderer>().enabled = false;
+            }
         }
     }
 }

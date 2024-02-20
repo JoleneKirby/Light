@@ -10,33 +10,31 @@ public class Eyes : MonoBehaviour
 
     private float RotationX = 0f;
 
-    public float Distance = 5f;
+    private float Distance = 0f;
 
-    // Start is called before the first frame update
+    public Pausing Paused;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X") * Sensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * Sensitivity;
-
-        RotationX -= mouseY;
-
-        RotationX = Mathf.Clamp(RotationX, -90, 90);
-
-        transform.localRotation = Quaternion.Euler(RotationX, 0, 0);
-        Target.Rotate(Vector3.up * mouseX);
-
+        if (Paused.GamePaused == false)
+        {
+            float mouseX = Input.GetAxis("Mouse X") * Sensitivity;
+            float mouseY = Input.GetAxis("Mouse Y") * Sensitivity;
+            RotationX -= mouseY;
+            RotationX = Mathf.Clamp(RotationX, -90, 90);
+            transform.localRotation = Quaternion.Euler(RotationX, 0, 0);
+            Target.Rotate(Vector3.up * mouseX);
+        }
     }
 
     void LateUpdate()
     {
         Vector3 targetPosition = Target.position - transform.forward * Distance;
         transform.position = targetPosition;
-
     }
 }

@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class DoorOpen : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public float MinDistane = 10f;
+    private float MinDistane = 3;
 
-    private bool DoorIsOpen = false;
+    private bool DoorIsOpen;
 
     public Transform Player;
 
@@ -19,24 +18,36 @@ public class DoorOpen : MonoBehaviour
 
     public LayerMask Door;
 
+    public Pausing Paused;
+
+    private bool RightAngle;
+
+    private float Counter = 180;
+
     private float Distance => Vector3.Distance(Player.position, TheDoor.position);
 
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        Ray ray = Camera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit Hit;
-
-        if (Input.GetMouseButtonDown(0) && Distance <= MinDistane && Physics.Raycast(ray, out Hit, float.MaxValue, Door.value) && DoorIsOpen == false)
+        if (Paused.GamePaused == false)
         {
-            DoorIsOpen = true;
-            Hinge.transform.Rotate(0, 90, 0);
-            Debug.Log(":)");
+            Ray ray = Camera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit Hit;
+
+            if (Input.GetMouseButtonDown(0) && Distance <= MinDistane && Physics.Raycast(ray, out Hit, float.MaxValue, Door.value) && DoorIsOpen == false)
+            {
+                DoorIsOpen = true;
+            }
+
+            if (DoorIsOpen == true && RightAngle == false)
+            {
+                Hinge.transform.Rotate(0, 0.5f, 0);
+                Counter -= 1;
+
+                if (Counter <= 0)
+                {
+                    RightAngle = true;
+                }
+            }
         }
     }
 }
