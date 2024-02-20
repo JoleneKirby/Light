@@ -8,16 +8,12 @@ public class KeyPickUp : MonoBehaviour
 
     public Transform Player;
 
-    public Transform KeyItem;
-
     public Camera Camera;
-
-    public LayerMask Key;
 
     [HideInInspector] public bool KeyGone;
 
     public Pausing Paused;
-    private float Distance => Vector3.Distance(Player.position, KeyItem.position);
+    private float Distance => Vector3.Distance(Player.position, transform.position);
 
     void Update()
     {
@@ -26,7 +22,7 @@ public class KeyPickUp : MonoBehaviour
             Ray ray = Camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit Hit;
 
-            if (Input.GetMouseButtonDown(0) && Distance <= MinDistance && Physics.Raycast(ray, out Hit, float.MaxValue, Key.value) && KeyGone == false)
+            if (Input.GetMouseButtonDown(0) && Distance <= MinDistance && Physics.Raycast(ray, out Hit, float.MaxValue) && KeyGone == false)
             {
                 KeyGone = true;
                 GetComponent<MeshRenderer>().enabled = false;

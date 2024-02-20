@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 35907743}
   - component: {fileID: 35907745}
   m_Layer: 5
-  m_Name: Exit
+  m_Name: Quit Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,7 +161,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -457, y: -45.2}
-  m_SizeDelta: {x: 86.9774, y: 41.4351}
+  m_SizeDelta: {x: 92, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &35907742
 MonoBehaviour:
@@ -893,7 +893,7 @@ GameObject:
   - component: {fileID: 1073229779}
   - component: {fileID: 1073229778}
   m_Layer: 5
-  m_Name: Exit Text
+  m_Name: Quit Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -938,7 +938,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Exit
+  m_text: Quit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1254,7 +1254,7 @@ GameObject:
   - component: {fileID: 2034864835}
   - component: {fileID: 2034864838}
   m_Layer: 5
-  m_Name: Start
+  m_Name: Start Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1278,7 +1278,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -446.7, y: 32}
-  m_SizeDelta: {x: 107.2093, y: 45.5422}
+  m_SizeDelta: {x: 106, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2034864835
 MonoBehaviour:

@@ -7,6 +7,8 @@ public class Dying : MonoBehaviour
 {
     public GameObject DeathScreen;
 
+    public GameObject PauseCube;
+
     void Start()
     {
         DeathScreen.SetActive(false);
@@ -17,6 +19,7 @@ public class Dying : MonoBehaviour
         if (collision.gameObject.CompareTag("Creature"))
         {
             DeathScreen.SetActive(true);
+            PauseCube.SetActive(false);
             yield return new WaitForSeconds(3);
             SceneManager.LoadScene("Game World");
         }

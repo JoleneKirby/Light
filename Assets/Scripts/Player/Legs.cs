@@ -20,6 +20,9 @@ public class Legs : MonoBehaviour
         float z = Input.GetAxis("Vertical");
         RaycastHit Hit; 
         Vector3 move = transform.right * x + transform.forward * z;
+        Controller.Move(move * Speed * Time.deltaTime);
+        Velocity.y -= Time.deltaTime;
+        Controller.Move(Velocity);
 
         if (Paused.GamePaused == false)
         {
@@ -53,9 +56,5 @@ public class Legs : MonoBehaviour
                 }
             }
         }
-
-        Controller.Move(move * Speed * Time.deltaTime);
-        Velocity.y -= 0.003f * Time.deltaTime;
-        Controller.Move(Velocity);
     }
 }
