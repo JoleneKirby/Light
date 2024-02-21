@@ -100,7 +100,7 @@ public class NoificationTap : MonoBehaviour
                 yield return new WaitForSeconds(1);
                 NotificationText[3].SetActive(false);
             }
-            else if (Button1.Button1On == true && Button2.Button2On && BigButton.BigButtonOn == true && TextUp[2] == false)
+            else if (BigButton.BigButtonOn == true && TextUp[2] == false)
             {
                 SaltTheEarth();
                 TextUp[2] = true;
