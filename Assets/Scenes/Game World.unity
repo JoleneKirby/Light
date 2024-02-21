@@ -912,33 +912,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8723360248662632409, guid: 126ec887621b6db4aaa48b18aad0f8b8, type: 3}
   m_PrefabInstance: {fileID: 7333863785503610523}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &675997482
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 675997475}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!1 &721510572
 GameObject:
   m_ObjectHideFlags: 0
@@ -1058,7 +1031,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1817357605}
-  Button: {fileID: 721510576}
   Camera: {fileID: 1362097655}
   Button2:
     serializedVersion: 2
@@ -2548,7 +2520,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1817357605}
-  Button: {fileID: 1303021548}
   Camera: {fileID: 1362097655}
   BigButton:
     serializedVersion: 2
@@ -3400,7 +3371,6 @@ GameObject:
   - component: {fileID: 1635295409}
   - component: {fileID: 1635295413}
   - component: {fileID: 1635295414}
-  - component: {fileID: 1635295415}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -3556,33 +3526,6 @@ MonoBehaviour:
   LockedDoor: {fileID: 1841888222}
   Key: {fileID: 1576883633}
   TextUp: 0000000000
---- !u!54 &1635295415
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1635295407}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
 --- !u!1 &1644513167
 GameObject:
   m_ObjectHideFlags: 0
@@ -4056,7 +3999,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
@@ -4396,7 +4339,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1817357605}
-  Button: {fileID: 1923797299}
   Camera: {fileID: 1362097655}
   Button1:
     serializedVersion: 2
@@ -4686,6 +4628,7 @@ MonoBehaviour:
   PauseCube: {fileID: 853119207}
   Crosshair: {fileID: 1644513167}
   WinnerText: {fileID: 1646515519}
+  Player: {fileID: 1817357610}
 --- !u!1 &2021092977
 GameObject:
   m_ObjectHideFlags: 0
@@ -5361,9 +5304,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2664078116651511334, guid: 126ec887621b6db4aaa48b18aad0f8b8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 675997476}
-    - targetCorrespondingSourceObject: {fileID: 2664078116651511334, guid: 126ec887621b6db4aaa48b18aad0f8b8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 675997482}
   m_SourcePrefab: {fileID: 100100000, guid: 126ec887621b6db4aaa48b18aad0f8b8, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

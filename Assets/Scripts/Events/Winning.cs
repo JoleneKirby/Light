@@ -12,8 +12,11 @@ public class Winning : MonoBehaviour
 
     public TextMeshProUGUI WinnerText;
 
+    public Rigidbody Player;
+
     private IEnumerator OnTriggerEnter(Collider other)
     {
+        Destroy(Player);
         PauseCube.SetActive(false);
         Crosshair.SetActive(false);
         WinnerText.color = new Color(0.75f, 1, 0, 1);

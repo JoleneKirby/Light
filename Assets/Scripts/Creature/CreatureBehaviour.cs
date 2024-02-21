@@ -5,13 +5,13 @@ using UnityEngine.AI;
 
 public class CreatureBehaviour : MonoBehaviour
 {
-    private enum CreatureState
+    private enum CreatureStates
     {
         Patrolling,
         Chasing
     }
 
-    private CreatureState CurrentState;
+    private CreatureStates CurrentState;
 
     public Transform[] PatrolPoints;
 
@@ -22,25 +22,24 @@ public class CreatureBehaviour : MonoBehaviour
     void Start()
     {
         Agent = GetComponent<NavMeshAgent>();
-        CurrentState = CreatureState.Patrolling;
     }
 
     void Update()
     {
-        float DistanceToPlayer = Vector3.Distance(transform.position, PatrolPoints[4].position);
+        float DistanceToPlayer = Vector3.Distance(transform.position, PatrolPoints[PatrolPoints.Length - 1].position);
 
         if (DistanceToPlayer <= 20)
         {
-            CurrentState = CreatureState.Chasing;
+            CurrentState = CreatureStates.Chasing;
         }
         else
         {
-            CurrentState = CreatureState.Patrolling;
+            CurrentState = CreatureStates.Patrolling;
         }
 
         switch (CurrentState)
         {
-            case CreatureState.Patrolling:
+            case CreatureStates.Patrolling:
 
                 Agent.SetDestination(PatrolPoints[CurrentPointIndext].position);
 
@@ -57,9 +56,9 @@ public class CreatureBehaviour : MonoBehaviour
                 Agent.speed = 5;
                 break;
 
-            case CreatureState.Chasing:
+            case CreatureStates.Chasing:
 
-                Agent.destination = PatrolPoints[4].position;
+                Agent.SetDestination(PatrolPoints[PatrolPoints.Length - 1].position);
                 Agent.speed = 9;
                 break;
         }
