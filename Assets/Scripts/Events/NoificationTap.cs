@@ -21,7 +21,7 @@ public class NoificationTap : MonoBehaviour
 
     public bool[] TextUp;
 
-    private void Start()
+    void Start()
     {
         foreach (var item in NotificationText)
         {
