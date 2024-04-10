@@ -38,7 +38,7 @@ public class Legs : MonoBehaviour
                     UnderCelling = true;
                 }
 
-                if (UnderCelling == true && Physics.Raycast(transform.position, Vector3.up, out Hit, 2))
+                if (UnderCelling == true && Physics2D.Raycast(transform.position, Vector3.up, out Hit, 2))
                 {
                     Speed = 2;
                     transform.localScale = new Vector3(1, 0.5f, 1);
